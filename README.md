@@ -1,0 +1,1 @@
+# camp25-avatar-parts-trim
