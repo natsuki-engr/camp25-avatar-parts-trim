@@ -65,7 +65,7 @@ def main():
     os.makedirs(output_dir, exist_ok=True)
     
     # 各サブディレクトリを処理
-    subdirs = ['01-skin', '02-hair', '03-eye', '04-tops', '05-bottoms']
+    subdirs = ['01-skin', '02-hair', '03-eye', '04-tops', '05-bottoms', '06-face-skin', '07-upper-skin', '08-lower-skin']
     
     coordinates_data = {}
     
