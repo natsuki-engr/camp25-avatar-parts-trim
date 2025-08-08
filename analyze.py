@@ -25,6 +25,26 @@ def get_bounding_box(image):
     
     return (min_x, min_y, max_x, max_y)
 
+def vertical_centralize_bounding_box(bbox, image_size):
+    """四角を画像の中央に配置するように調整"""
+    if bbox is None:
+        return None
+            
+    width, height = image_size
+    min_x, min_y, max_x, max_y = bbox
+
+    left_space = min_x
+    right_space = width - max_x
+
+    if left_space > right_space:
+        # 左側のスペースが大きい場合、左に伸ばす
+        min_x = min_x - (left_space - right_space)
+    else:
+        # 右側のスペースが大きい場合、右に伸ばす
+        max_x = max_x + (right_space - left_space)
+        
+    return (min_x, min_y, max_x, max_y)
+
 def composite_images_in_directory(directory_path):
     """ディレクトリ内の画像を重ね合わせる"""
     image_files = glob.glob(os.path.join(directory_path, "*.png"))
@@ -87,6 +107,9 @@ def main():
         
         # アルファ値が0でない部分の包括する四角を取得
         bbox = get_bounding_box(composite_image)
+        
+        # 画像の中央に四角が配置されるよう四角を拡張
+        # bbox = vertical_centralize_bounding_box(bbox, composite_image.size)
         
         # 四角を描画
         result_image = draw_bounding_box_on_image(composite_image, bbox)
