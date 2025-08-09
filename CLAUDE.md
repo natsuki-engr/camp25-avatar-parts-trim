@@ -27,3 +27,9 @@ input/
 
 - output/analyze/coordinates.jsonを読み込み、四角の座標と幅と高さを元に、`input`ディレクトリ内の画像をトリミングする
 - トリミングした画像は`output/trim`ディレクトリに保存される
+
+## individual trim
+
+- `input`ディレクトリ内の画像をトリミングする
+- trimとは違い、各画像ごとに余白を最大限省いたトリミングを行う
+- トリミングした画像は`output/individual_trim`ディレクトリに保存される
